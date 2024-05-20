@@ -15,6 +15,10 @@ FROM eclipse-temurin:17-jdk-alpine
 
 COPY --from=build expense_tracker/target/springboot.expense_tracker-0.0.1-SNAPSHOT.jar expense_tracker.jar
 
+ENV DB_HOST=localhost DB_NAME=expense_tracker DB_PASSWORD=acquah_user DB_PORT=5433 DB_USERNAME=acquah
+
 EXPOSE 8083
+
+VOLUME postggres_volume
 
 ENTRYPOINT ["java", "-jar", "expense_tracker.jar"]
