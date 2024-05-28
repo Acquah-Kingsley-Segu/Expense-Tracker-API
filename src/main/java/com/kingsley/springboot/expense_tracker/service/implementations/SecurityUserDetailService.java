@@ -1,4 +1,5 @@
 package com.kingsley.springboot.expense_tracker.service.implementations;
+import com.kingsley.springboot.expense_tracker.config.SecurityUser;
 import com.kingsley.springboot.expense_tracker.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,6 @@ public class SecurityUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         var user = userRepository.findSystemUserByEmail(email);
 
-        return null;
+        return new SecurityUser(user);
     }
 }
