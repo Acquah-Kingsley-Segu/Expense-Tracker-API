@@ -2,12 +2,14 @@ package com.kingsley.springboot.expense_tracker.config;
 
 import com.kingsley.springboot.expense_tracker.entity.SystemUser;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 @AllArgsConstructor
+@Getter
 public class SecurityUser implements UserDetails {
     private final SystemUser user;
     @Override
@@ -42,6 +44,6 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return user.isAccountVerified();
     }
 }

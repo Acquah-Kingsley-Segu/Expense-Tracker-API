@@ -10,20 +10,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/tracker")
+@RequestMapping("/api/v1/tracker/auth")
 @AllArgsConstructor
 public class AuthController {
     private final UserService userService;
 
-    @PostMapping("/auth/signup")
+    @PostMapping("/signup")
     public ResponseEntity<Object> signup(@RequestBody SystemUserDTO newUser){
         String response = userService.createNewUser(newUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-    @PostMapping("/auth/login")
+    @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody LoginDTO loginCredentials){
-        System.out.println("Login");
         Object response = userService.authenticateUser(loginCredentials);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/account/verification")
+    public ResponseEntity<String> otpVerification(@RequestParam String otp){
+        String response = userService.verifyOTP(otp);
         return ResponseEntity.ok(response);
     }
 }

@@ -7,4 +7,6 @@ public interface UserService {
     String createNewUser(SystemUserDTO newUser);
 
     Object authenticateUser(LoginDTO loginCredentials);
+
+    String verifyOTP(String otp);
 }
