@@ -31,4 +31,10 @@ public class AuthController {
         String response = userService.verifyOTP(otp);
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/request/change-password")
+    public ResponseEntity<String> changePasswordRequest(@RequestParam String email){
+        String response = userService.verifyChangePasswordEmail(email);
+        return ResponseEntity.ok(response);
+    }
 }

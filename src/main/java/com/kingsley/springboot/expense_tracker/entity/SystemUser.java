@@ -12,8 +12,8 @@ import lombok.*;
 @NoArgsConstructor
 public class SystemUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String uuid;
+    @GeneratedValue
+    private int id;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

@@ -9,4 +9,6 @@ public interface UserService {
     Object authenticateUser(LoginDTO loginCredentials);
 
     String verifyOTP(String otp);
+
+    String verifyChangePasswordEmail(String email);
 }

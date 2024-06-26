@@ -15,7 +15,7 @@ public class SecurityUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        var user = userRepository.findSystemUserByEmail(email);
+        var user = userRepository.findSystemUserByEmail(email).orElseThrow(() -> new UsernameNotFoundException("INVALID USER"));
 
         return new SecurityUser(user);
     }

@@ -21,7 +21,7 @@ public class SecurityConfig {
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .requestMatchers("/api/v1/tracker/auth/**").permitAll()
+                                .requestMatchers("/api/v1/tracker/auth/**", "/api/v1/tracker/swagger-ui/**", "/api/v1/tracker/api-docs/**").permitAll()
                                 .anyRequest().authenticated())
                 .build();
     }
